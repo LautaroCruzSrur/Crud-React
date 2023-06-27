@@ -1,11 +1,21 @@
 {
   "user": [
     {
-      "nombre": "asadasdsa",
-      "apellido": "asdsad",
-      "email": "asdsadsa@ads.com",
-      "password": "sadsadsad",
-      "id": 1
+      "nombre": "Lautaro",
+      "apellido": "Cruz",
+      "email": "lautaro.cruzsrur@gmail.com",
+      "password": "123456",
+      "img" : "https://www.circulo.es/sites/default/files/styles/large_wide_image/public/2021-03/2-Fotografia_0.jpg?h=bd",
+      "id": 5,
+      "type": "ADM"
+    },
+    {
+      "nombre": "Lautaro Cruz",
+      "apellido": "1234",
+      "email": "gameplay1514@gmail.com",
+      "password": "1234",
+      "img" : "https://img.freepik.com/foto-gratis/retrato-hermoso-mujer-joven-posicion-pared-gris_231208-10760.jpg?w=740&t=st=1687791632~exp=1687792232~hmac=48995324ec8973b45d402ef20430756f9d5d3addb5a7a31cc1c498cf974b2357",
+      "id": 6
     }
   ]
 }
