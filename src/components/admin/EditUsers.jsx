@@ -1,33 +1,17 @@
-import React ,{useState , useEffect} from 'react'
+import React ,{useState , useEffect ,useContext} from 'react'
 import axios from 'axios';
+import { UsuariosContext } from '../../context/UserContext';
 
 
 const EditUsers = () => {
 
-    const [users, setUsers] = useState([]);
+  const { usuarios , getUsers} = useContext(UsuariosContext);
 
   useEffect(() => {
     getUsers();
-  }, []);
+  }, [usuarios]);
   
-  const getUsers = async () => {
-    try {
-      const response = await axios.get("http://localhost:3000/user");
-      setUsers(response.data);
-    } catch (error) {
-      console.error("Error al obtener los usuarios:", error);
-    }
-  };
 
-
-    const editUsers = async () => {
-        try {
-          const response = await axios.put("http://localhost:3000/user");
-          setUsers(response.data);
-        } catch (error) {
-          console.error("Error al obtener los usuarios:", error);
-        }
-      };
   return (
     <div>EditUsers</div>
   )

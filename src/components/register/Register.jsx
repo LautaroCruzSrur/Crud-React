@@ -1,33 +1,44 @@
-import {useState} from 'react'
-import axios from 'axios';
+import {useContext, useState} from 'react'
+import { UsuariosContext } from '../../context/UserContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Col , Form , Row , Button} from 'react-bootstrap';
 
 
+ const Register = () => {
 
-export const Register = () => {
-    const [dataUser, setDataUser] = useState({
-        nombre: "",
-        apellido : "",
-        email: "",
-        password: "",
-        img : "",
-    });
+  const {addUser} = useContext(UsuariosContext)
+
+  const [usuarios, setUsuarios] = useState({
+    nombre: "",
+    apellido: "",
+    email : "",
+    contraseña : "",
+    img : "",
+    id : "",
+    tipo : "usuario",
+  });
+
     const handleChange = (e) => {
-        setDataUser({
-            ...dataUser, //recupera los datos
+        setUsuarios({
+            ...usuarios, //recupera los datos
             [e.target.name]: e.target.value
         });
     }
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        try {
-            const response = axios.post("http://localhost:3000/user", dataUser)
-            console.log(response)
-        }catch (error){
-            console.log(error)
-        }
+    const handleSubmit = (e) =>{
+      e.preventDefault();
+      addUser(usuarios);
     }
+
+    setUsuarios({
+      nombre: "",
+      apellido: "",
+      email : "",
+      contraseña : "",
+      img : "",
+      id : "",
+      tipo : "usuario",
+    })
+   
   return (
     <>
      <Form fluid onSubmit={handleSubmit} className="m-5 w-25">
@@ -40,7 +51,7 @@ export const Register = () => {
         type="text"
         placeholder="Nombre"
         name="nombre"
-        value={dataUser.nombre}
+        value={usuarios.nombre}
         onChange={handleChange}
       />
     </Col>
@@ -54,7 +65,7 @@ export const Register = () => {
         type="text"
         placeholder="Apellido"
         name = "apellido"
-        value={dataUser.apellido}
+        value={usuarios.apellido}
         onChange={handleChange}
       />
     </Col>
@@ -68,7 +79,7 @@ export const Register = () => {
         type="text"
         placeholder="Url"
         name = "img"
-        value={dataUser.img}
+        value={usuarios.img}
         onChange={handleChange}
       />
     </Col>
@@ -82,7 +93,7 @@ export const Register = () => {
         type="email"
         placeholder="Email"
         name = "email"
-        value={dataUser.email}
+        value={usuarios.email}
         onChange={handleChange}
       />
     </Col>
@@ -97,7 +108,7 @@ export const Register = () => {
         type="password"
         placeholder="Password"
         name="password"
-        value={dataUser.password}
+        value={usuarios.password}
         onChange={handleChange}
       />
     </Col>
@@ -109,3 +120,4 @@ export const Register = () => {
     </>
   )
 }
+export default Register;
