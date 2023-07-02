@@ -52,13 +52,12 @@ const UserContext = ({children}) => {
 
       const viewProfileId= async (id) => {
         try {
-             await axios.get(`http://localhost:3000/user/${id}`)
-            const profileId = usuarios.filter((usuario => usuario.id !== id))
-            setUsuarios(profileId);
-        } catch (error) {
-            console.log(error)
-        }
+          const response = await axios.get(`http://localhost:3000/user/${id}`)  
+          console.log(response.data)         
+      }catch (error) {
+        console.log(error, "error de productos");
       }
+    }
     
     const logout = () => {
         localStorage.removeItem("user")
